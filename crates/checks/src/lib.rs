@@ -31,6 +31,7 @@ pub mod debug_entrypoint;
 pub mod decimals_mismatch;
 pub mod deploy_arg_auth;
 pub mod deploy_arg_auth;
+pub mod deployer_reuse;
 pub mod dynamic_symbol_key;
 pub mod env_in_struct;
 pub mod event_duplicate;
@@ -151,6 +152,7 @@ pub use debug_entrypoint::DebugEntrypointCheck;
 pub use decimals_mismatch::DecimalsMismatchCheck;
 pub use deploy_arg_auth::DeployArgAuthCheck;
 pub use deploy_arg_auth::DeployArgAuthCheck;
+pub use deployer_reuse::DeployerReuseCheck;
 pub use dynamic_symbol_key::DynamicSymbolKeyCheck;
 pub use env_in_struct::EnvInStructCheck;
 pub use event_duplicate::EventDuplicateCheck;
@@ -305,6 +307,7 @@ pub fn default_checks() -> Vec<Box<dyn Check + Send + Sync>> {
         Box::new(AuthorizeEmptyCheck),
         Box::new(AddressCmpInsteadOfAuthCheck),
         Box::new(DeployArgAuthCheck),
+        Box::new(DeployerReuseCheck),
         Box::new(AuthTempStorageCheck),
         Box::new(MapKeyExplosionCheck),
         Box::new(DynamicSymbolKeyCheck),
