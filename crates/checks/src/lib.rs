@@ -113,6 +113,7 @@ pub mod vec_get_unwrap;
 pub mod vec_mutate_in_loop;
 pub mod vec_push_in_loop;
 pub mod vesting_cliff;
+pub mod weak_commitment_known;
 pub mod weak_randomness;
 pub mod while_host_condition;
 pub mod withdraw_auth;
@@ -230,6 +231,7 @@ pub use unvalidated_price::UnvalidatedPriceCheck;
 pub use vec_mutate_in_loop::VecMutateInLoopCheck;
 pub use vec_push_in_loop::VecPushInLoopCheck;
 pub use vesting_cliff::VestingCliffCheck;
+pub use weak_commitment_known::WeakCommitmentKnownCheck;
 pub use weak_randomness::WeakRandomnessCheck;
 pub use while_host_condition::WhileHostConditionCheck;
 pub use withdraw_auth::WithdrawAuthCheck;
@@ -294,6 +296,7 @@ pub fn default_checks() -> Vec<Box<dyn Check + Send + Sync>> {
         Box::new(AmountMulOverflowCheck),
         Box::new(FloatArithmeticCheck),
         Box::new(WeakRandomnessCheck),
+        Box::new(WeakCommitmentKnownCheck),
         Box::new(ReentrancyCheck),
         Box::new(TokenTransferUncheckedCheck),
         Box::new(ContracterrorAttrCheck),
