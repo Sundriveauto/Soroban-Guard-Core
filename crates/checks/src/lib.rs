@@ -53,8 +53,11 @@ pub mod storage;
 pub mod storage_type_confusion;
 pub mod temp_get_no_has;
 pub mod temp_read_in_view;
+pub mod bump_after_read;
 pub mod temp_set_no_ttl;
 pub mod timestamp_expiry_no_min;
+pub mod ttl_every_call;
+pub mod ttl_uniform;
 pub mod timestamp_truncation;
 pub mod token_burn_auth;
 pub mod token_transfer_unchecked;
@@ -129,8 +132,11 @@ pub use sequence_nonce::SequenceNonceCheck;
 pub use storage::UnsafeStoragePatternsCheck;
 pub use storage_type_confusion::StorageTypeConfusionCheck;
 pub use temp_get_no_has::TempGetNoHasCheck;
+pub use bump_after_read::BumpAfterReadCheck;
 pub use temp_set_no_ttl::TempSetNoTtlCheck;
 pub use timestamp_expiry_no_min::TimestampExpiryNoMinCheck;
+pub use ttl_every_call::TtlEveryCallCheck;
+pub use ttl_uniform::TtlUniformCheck;
 pub use timestamp_truncation::TimestampTruncationCheck;
 pub use token_burn_auth::TokenBurnAuthCheck;
 pub use token_transfer_unchecked::TokenTransferUncheckedCheck;
@@ -246,5 +252,8 @@ pub fn default_checks() -> Vec<Box<dyn Check + Send + Sync>> {
         Box::new(LinearWhitelistScanCheck),
         Box::new(UncappedSlippageCheck),
         Box::new(NonceIncrementOrderCheck),
+        Box::new(BumpAfterReadCheck),
+        Box::new(TtlUniformCheck),
+        Box::new(TtlEveryCallCheck),
     ]
 }
